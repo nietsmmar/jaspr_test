@@ -2,6 +2,7 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_flutter_embed/jaspr_flutter_embed.dart';
 
 @Import.onWeb('package:flutter_test_app/main.dart', show: [#MyApp])
+import 'test.imports.dart';
 
 @client
 class Test extends StatelessComponent {
@@ -11,9 +12,7 @@ class Test extends StatelessComponent {
   Component build(BuildContext context) {
     return FlutterEmbedView(
       loader: text('loading...'),
-      widget: MyApp(
-        title: 'My Embedded Flutter App',
-      ),
+      widget: MyApp(),
     );
   }
 }
