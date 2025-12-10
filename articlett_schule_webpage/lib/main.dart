@@ -23,6 +23,9 @@ void main() {
   // [Document] renders the root document structure (<html>, <head> and <body>)
   // with the provided parameters and components.
   runApp(Document(
+    head: [
+      script(src: 'flutter_bootstrap.js', async: true),
+    ],
     title: 'articlett_schule_webpage',
     styles: [
       // Special import rule to include to another css file.
