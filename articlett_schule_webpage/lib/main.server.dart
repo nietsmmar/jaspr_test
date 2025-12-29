@@ -4,27 +4,37 @@
 // To run code on the client, use the @client annotation.
 
 // Server-specific jaspr import.
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/server.dart';
 
 // Imports the [App] component.
 import 'app.dart';
 
 // This file is generated automatically by Jaspr, do not remove or edit.
-import 'jaspr_options.dart';
+import 'main.server.options.dart';
 
 void main() {
   // Initializes the server environment with the generated default options.
   Jaspr.initializeApp(
-    options: defaultJasprOptions,
+    options: defaultServerOptions,
   );
 
   // Starts the app.
   //
   // [Document] renders the root document structure (<html>, <head> and <body>)
   // with the provided parameters and components.
+
+
   runApp(Document(
     head: [
       script(src: 'flutter_bootstrap.js', async: true),
+      script(src: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.min.mjs', attributes: {'type': 'module'}),
+      script(content: "var { pdfjsLib } = globalThis;" 
+      "pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.worker.mjs';" 
+"var pdfRenderOptions = { " 
+    "cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/cmaps/',"
+    "cMapPacked: true,}", attributes: {'type': 'module'}),
+        script(src: '/assets/packages/flutter_inappwebview_web/assets/web/web_support.js', defer: true, attributes: {'type': 'application/javascript'}),
     ],
     title: 'articlett_schule_webpage',
     styles: [

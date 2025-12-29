@@ -1,7 +1,8 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_flutter_embed/jaspr_flutter_embed.dart';
 
-@Import.onWeb('package:flutter_test_app/main.dart', show: [#MyApp])
+@Import.onWeb('package:articlett_schule/main.dart', show: [#MyApp])
 import 'test.imports.dart';
 
 @client
@@ -10,9 +11,17 @@ class Test extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    return FlutterEmbedView(
-      loader: text('loading...'),
-      widget: kIsWeb ? MyApp(): null,
+    return section(
+      [
+        FlutterEmbedView(
+          styles: Styles(
+            width: 412.px,
+            height: 915.px,
+          ),
+          loader: Component.text('loading...'),
+          widget: kIsWeb ? MyApp() : null,
+        ),
+      ],
     );
   }
 }
